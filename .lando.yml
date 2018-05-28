@@ -1,0 +1,29 @@
+name: lando-behat-workflow
+recipe: drupal8
+config:
+  env: dev
+  site: lando-behat-workflow
+  webroot: .
+services:
+  appserver:
+    overrides:
+      services:
+        environment:
+          BEHAT_PARAMS: >-
+            {"extensions" : {"Behat\\MinkExtension" : {"base_url" :
+            "http://landobehatworkflow.lndo.site/"}, "Drupal\\DrupalExtension" : {"drush" :   {
+            "root":  "/app" }}}}
+
+tooling:
+  phplint:
+    service: appserver
+    cmd: /app/vendor/bin/phplint
+  phpcs:
+    service: appserver
+    cmd: /app/vendor/bin/phpcs
+  phpunit:
+    service: appserver
+    cmd: /app/vendor/bin/phpunit
+  behat:
+    service: appserver
+    cmd: /app/vendor/bin/behat
