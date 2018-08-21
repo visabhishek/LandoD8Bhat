@@ -17,3 +17,4 @@ default:
       api_driver: 'drupal'
       drupal:
         drupal_root: '/app'
+#https://www.lakedrops.com/en/blog/post/testing-drupal-projects-behat-phpstorm
